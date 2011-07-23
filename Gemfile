@@ -10,6 +10,7 @@ gem 'linkedin'
 
 # Use unicorn as the web server
 # gem 'unicorn'
+gem 'mysql'
 
 # Deploy with Capistrano
 # gem 'capistrano'
