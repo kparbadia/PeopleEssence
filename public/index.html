@@ -20,7 +20,7 @@
           <h1>People Essence</h1>
         </div>
 
-		<% form_for @user_session, :url => user_session_path do |f| %>
+		<%= form_for @user_session, :url => user_session_path do |f| %>
 		  <%= f.error_messages %>
 		  <%= oauth_login_button :value => "Login", :class => 'linkedin' %>
 		<% end %>
