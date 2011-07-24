@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<h1>Questionnaire</h1>
+<div style="display: table;">
+  <% @questionnaire.answers.each() do |ans| %>
+    <div style="display: table-row;">
+      <div style="display: table-cell;">
+        <div style="padding: 5px;"><%= ans.question.title -%>? </div>
+      </div>
+      <div style="display: table-cell;">
+        <div style="padding: 5px;"><%= ans.text -%></div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<br/>
+<%= link_to 'Edit', edit_questionnaire_path(@questionnaire) %> |
+<%= link_to 'Back', questionnaires_path %>
+<br/><br/>
+<div style="display: table;">
+  <h1>Linked in details</h1>
+  <% group = current_user.user_details.group_by{|d| d.linkedin_attribute} %>
+  <% group.each() do |key, details| %>
+    <%= key.titleize %>: <%= details.collect(&:linkedin_value).join(", ") -%><br/><br/>
+  <% end %>
+</div>
+

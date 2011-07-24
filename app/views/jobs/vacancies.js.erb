@@ -1,0 +1,1 @@
+$("#job_vacancies_<%= params[:index] -%>").html("<%= escape_javascript(render(:partial => "jobs/vacancies", :locals => {:job => @job})) -%>");

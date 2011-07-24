@@ -1,23 +1,30 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rake', '0.8.7'
+gem 'rails', '3.0.5'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-gem 'linkedin'
+gem 'devise'#, :git => "http://github.com/plataformatec/devise.git"
 
+gem 'mysql'
+#gem 'mysql2'
+gem "oa-oauth", :require => "omniauth/oauth"
+#gem "jquery-rails"
+gem 'fb_graph'
+gem 'twitter'
+gem 'linkedin', '0.2.2'
+gem "jquery-rails"
 # Use unicorn as the web server
 # gem 'unicorn'
-# gem 'mysql'
 
 # Deploy with Capistrano
 # gem 'capistrano'
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
-# gem 'ruby-debug19', :require => 'ruby-debug'
+# gem 'ruby-debug19'
 
 # Bundle the extra gems:
 # gem 'bj'
@@ -31,3 +38,8 @@ gem 'linkedin'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+group :development, :test do
+  gem 'capistrano'
+  gem 'capistrano-ext'
+end

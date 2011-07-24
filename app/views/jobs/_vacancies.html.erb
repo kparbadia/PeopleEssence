@@ -1,0 +1,35 @@
+<% if(job[:search_result][:simply_hired].present? or job[:search_result][:indeed].present?) %>
+  <table>
+    <%if(job[:search_result][:indeed].present?)%>
+      <%job[:search_result][:indeed].each_slice(2) do |search_results_indeed|%>
+        <tr>
+          <%search_results_indeed.each do |search_result_indeed|%>
+            <%if(search_result_indeed[:title].present?)%>
+              <td width="25%"><%= search_result_indeed[:title]%> - ID</td>
+              <td width="10%"><%= search_result_indeed[:city]%></td>
+              <td width="5%"><%= search_result_indeed[:state]%></td>
+              <td width="10%"><%= link_to(image_tag('/images/apply_now_2.gif', :width => '105px'), search_result_indeed[:url])%></td>
+            <%end%>
+          <%end%>
+        </tr>
+      <%end%>
+    <%end%>
+
+    <%if(job[:search_result][:simply_hired].present?)%>
+      <%job[:search_result][:simply_hired].each_slice(2) do |search_results_simply_hired|%>
+        <tr>
+          <%search_results_simply_hired.each do |search_result_simply_hired|%>
+            <%if(search_result_simply_hired[:title].present?)%>
+              <td width="25%"><%= search_result_simply_hired[:title]%> - SH</td>
+              <td width="10%"><%= search_result_simply_hired[:city]%></td>
+              <td width="5%"><%= search_result_simply_hired[:state]%></td>
+              <td width="10%"><%= link_to(image_tag('/images/apply_now_2.gif', :width => '105px'), search_result_simply_hired[:url])%></td>
+            <%end%>
+          <%end%>
+        </tr>
+      <%end%>
+    <%end%>
+  </table>
+<% else %>
+  <div style="text-align: center; font-size: 16px;">Currently no job available</div>
+<% end %>

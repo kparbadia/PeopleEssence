@@ -1,0 +1,32 @@
+<%= body_title("Registered Users")%>
+<div>
+  <table>
+    <th>
+    <td>
+      Name
+    </td>
+    <td>
+      Email
+    </td>
+    <td>
+      Registered at
+    </td>
+    <td>
+      Associated with
+    </td>
+    </th>
+    <%@users.each_with_index do |user, index|%>
+      <%if(user.full_name.present?)%>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= user.full_name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.created_at %></td>
+          <td>
+            <%= user.authentications.collect(&:provider).join(",") %>
+          </td>
+        </tr>
+      <%end%>
+    <%end%>
+  </table>
+</div>

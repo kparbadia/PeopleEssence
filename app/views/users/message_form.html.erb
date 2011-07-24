@@ -1,0 +1,13 @@
+<div id ="div_popup">
+  Send a message to <b><%= @user.full_name %></b> in <%= @provider%>
+  <br/><br/>
+  <%form_tag(send_message_user_path(@user.id, :provider => @provider), :method => :post, :remote => true) do%>
+    <%if(@provider != 'Facebook')%>
+      Subject: <%= text_field_tag :message_subject, nil, :size => 112%>
+      <br/><br/>
+    <%end%>
+    Body: <%= text_area_tag(:message_text, nil, {:rows => 10, :cols => 100})%>
+    <br/>
+    <%= submit_tag("Send")%>
+  <%end%>
+</div>

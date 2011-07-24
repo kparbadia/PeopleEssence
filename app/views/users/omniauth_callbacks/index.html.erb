@@ -1,0 +1,13 @@
+<h1 style="text-align: center;">Getting A Job Is All About Who You Know</h1><br/><br/>
+<div style="text-align: center;">
+  <h3 style="float: left;margin-left: 350px;">Find a list of job openings from<br/>companies that your friends<br/> and followers already work for.</h3>
+  <%unless(current_user.present?)%>
+    <h3 style="float: right;margin-right: 350px;color: red;">Try it now for free<br/><%= link_to 'Sign up and find jobs', new_user_registration_path(), :remote => true%></h3>
+  <%end%>
+</div>
+
+<div style="clear: both;"></div>
+
+<% if(@auth) %>
+  <%= debug(@auth) %>
+<% end %>

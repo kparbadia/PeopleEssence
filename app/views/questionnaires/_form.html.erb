@@ -1,0 +1,30 @@
+<% form_for(@questionnaire) do |f| %>
+  <% if @questionnaire.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@questionnaire.errors.count, "error") %> prohibited this questionnaire from being saved:</h2>
+
+      <ul>
+        <% @questionnaire.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: table;">
+    <% f.fields_for(:answers) do |answer_form| -%>
+      <div style="display: table-row;">
+        <%= answer_form.hidden_field :question_id -%>
+        <div style="display: table-cell;">
+          <div style="padding: 5px"><%= answer_form.object.question.title -%>?</div>
+        </div>
+        <div style="display: table-cell;">
+          <div style="padding: 5px"><%= answer_form.select(:text, Question.answer_options.collect(){|option| [option[:label],option[:label]]}) -%></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

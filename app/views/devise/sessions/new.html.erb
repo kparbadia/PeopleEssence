@@ -1,0 +1,29 @@
+<div class="pop_content">
+  <h2>Sign in</h2>
+
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <a href="<%= omniauth_authorize_path(:user, :facebook) -%>" class="auth_provider">
+      <%= image_tag("facebook_64.png", :size => "64x64", :alt => 'Facebook') %>
+    </a>
+    <a href="<%= omniauth_authorize_path(:user, :linked_in) -%>" class="auth_provider">
+      <%= image_tag("linked_in_64.png", :size => "64x64", :alt => 'Linkedin') %>
+    </a>
+    <a href="<%= omniauth_authorize_path(:user, :twitter) -%>" class="auth_provider">
+      <%= image_tag("twitter_64.png", :size => "64x64", :alt => 'Twitter') %>
+    </a><br/><br/><br/><br/><br/>
+    <span style="margin-left: 160px; display: block;"><h4>OR</h4></span>
+    <p><%= f.label :email %><br />
+      <%= f.email_field :email %></p>
+
+    <p><%= f.label :password %><br />
+      <%= f.password_field :password %></p>
+
+    <% if devise_mapping.rememberable? -%>
+      <p><%= f.check_box :remember_me %><%= f.label :remember_me %></p>
+    <% end -%>
+
+    <p><%= f.submit "Sign in", {:class => 'button_grey'} %></p>
+  <% end %>
+
+  <%= render :partial => "devise/shared/links" %>
+</div>

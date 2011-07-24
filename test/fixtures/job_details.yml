@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  job_id: 1
+  category: MyString
+  reference: MyString
+  weight: 1
+  answer: MyString
+  answer_weight: 1
+
+two:
+  job_id: 1
+  category: MyString
+  reference: MyString
+  weight: 1
+  answer: MyString
+  answer_weight: 1

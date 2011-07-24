@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>People Essence - Love Where You Work</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
+  <head>
+    <title>People Essence - Love Where You Work</title>
+    <%= stylesheet_link_tag :all %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <div style="padding: 50px 100px;">
+      <div style="margin-bottom: 30px;">
+        <div style="float: left;">
+          <a href="/questionnaires">Questionnaire</a> |
+          <a href="/jobs">Matched jobs</a>
+        </div>
+        <div style="float: right;">
+          <% if(user_signed_in?()) %>
+            Welcome <%= current_user.first_name + " " + current_user.last_name -%>
+          <% end %>
+        </div>
+      </div>
+      <div style="clear: both;"></div>
+      <%= yield %>
+    </div>
 
-<%= yield %>
-
-</body>
+  </body>
 </html>

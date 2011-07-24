@@ -1,0 +1,70 @@
+<%= body_title("Job Results")%>
+<div id="fEmp">
+  <table style="margin: 10px; padding: 10px;width: 100%;">    
+    <tbody>
+      <%@jobs.each_with_index do |job, index|%>
+        <%if true #(job[:search_result][:simply_hired].present? || job[:search_result][:indeed].present?)%>
+          <tr>
+            <td>
+              <div class="feEmpBdWrap ajax-container">
+                <h2 class="webFont">
+                  Company: <%= job[:company_name]%>
+                </h2>
+                <div class="clearer"></div>
+                <div>Friends:</div>
+                <% job[:friends].each_slice(3) do |friends|%>
+                  <ul class="inlineList">
+                    <%friends.each do |friend|%>
+                      <li>
+                        <p>
+                          <span style="color:#FFFFFF;font-size: 16px;"><%=friend.user_name%></span><br/>
+                          <%if(friend.employments.first.present?)%>
+                            <span class="feFriendPos"><%=friend.employments.first.position%></span><br/>
+                          <%end%>
+                          <span>
+                            <%if(friend.provider == User::TYPE_PROVIDER_FACEBOOK)%>
+                              <%=link_to(image_tag("send_message.png", :height => '26px', :width => '112px'), message_form_user_path(friend.id, :provider => User::TYPE_PROVIDER_FACEBOOK), :remote => true)%>
+                            <%elsif(friend.provider == User::TYPE_PROVIDER_LINKEDIN)%>
+                              <%=link_to(image_tag("send_message.png", :height => '26px', :width => '112px'), message_form_user_path(friend.id, :provider => User::TYPE_PROVIDER_LINKEDIN), :remote => true)%>
+                            <%end%>
+                          </span>
+                        </p>
+                      </li>
+                    <%end%>
+                  </ul>
+                <%end%>
+                <%= link_to("", vacancies_jobs_path(:index => index, :company => job[:company_name]), :remote => true,
+                  :method => :get, :class => "autoload-job-vacancy-link", :style => "display: none;") -%>
+                <!--div class="ajax-indicator"></div-->
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div id="job_vacancies_<%= index -%>" class="job-vacancies">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="12"><div id="divider"></div></td>
+          </tr>
+        <%end%>
+      <%end%>
+    </tbody>
+  </table>
+</div>
+
+<script type="text/javascript">
+  setTimeout(autoLoadNextJobVacancies, 1000);
+
+  function autoLoadNextJobVacancies()
+  {
+    if($("a.autoload-job-vacancy-link").size() > 0)
+    {
+      var autoload_link = $($("a.autoload-job-vacancy-link")[0]);
+      autoload_link.removeClass("autoload-job-vacancy-link");
+      autoload_link.click();
+      setTimeout(autoLoadNextJobVacancies, 2000);
+    }
+  }
+</script>
