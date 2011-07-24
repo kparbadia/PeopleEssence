@@ -8,8 +8,8 @@ gem 'rails', '3.0.5'
 
 gem 'devise'#, :git => "http://github.com/plataformatec/devise.git"
 
-gem 'mysql'
-#gem 'mysql2'
+#gem 'mysql'
+gem 'mysql2'
 gem "oa-oauth", :require => "omniauth/oauth"
 #gem "jquery-rails"
 gem 'fb_graph'
