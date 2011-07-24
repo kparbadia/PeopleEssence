@@ -35,10 +35,10 @@ RewriteRule ^([^.]+)$ $1.html [QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
 
- #RailsEnv test
- #RackEnv test
- #PassengerEnabled on
- #PassengerAppRoot /home/user/apps/app-test/current
+ RailsEnv test
+ RackEnv test
+ PassengerEnabled on
+ PassengerAppRoot /home/nascenia/apps/peopleessence/current
 
 # In case Rails experiences terminal errors
 # Instead of displaying this message you can supply a file here which will be rendered instead

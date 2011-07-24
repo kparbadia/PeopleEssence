@@ -21,10 +21,10 @@ test:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: people_essence
+  database: nascenia_people
   pool: 5
-  username: people_essence
-  password: 
+  username: nascenia_test
+  password: test
 
 production:
   adapter: mysql2
